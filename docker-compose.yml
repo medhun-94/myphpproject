@@ -1,0 +1,12 @@
+version: "3"
+services:
+  web:
+    image: vmcvsjenkins.eastus2.cloudapp.azure.com:8083/myphpproject
+    ports:
+      - "80:80"
+  watchtower:
+    image: v2tec/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/vmcvsjenkins/.docker/config.json:/config.json
+    command: --interval 300
